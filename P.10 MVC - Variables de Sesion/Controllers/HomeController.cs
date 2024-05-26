@@ -28,5 +28,6 @@ namespace P._10_MVC___Variables_de_Sesion.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
