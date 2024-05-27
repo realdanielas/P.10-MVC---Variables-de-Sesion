@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using P._10_MVC___Variables_de_Sesion.Models;
+
 namespace P._10_MVC___Variables_de_Sesion
 {
     public class Program
@@ -8,6 +12,20 @@ namespace P._10_MVC___Variables_de_Sesion
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<loginDbContext>(options =>
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("stringConnection")
+                    )
+                );
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            }
+            );
 
             var app = builder.Build();
 
@@ -26,9 +44,11 @@ namespace P._10_MVC___Variables_de_Sesion
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Inicio}/{action=Login}/{id?}");
 
             app.Run();
         }

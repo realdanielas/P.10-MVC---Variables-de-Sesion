@@ -7,8 +7,10 @@ namespace P._10_MVC___Variables_de_Sesion.Models
     public class loginDbContext : DbContext
     {
         public loginDbContext(DbContextOptions<loginDbContext> options) : base(options)
-        { }
+        { 
+        }
 
-        public DbSet<Login> login { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Credenciales> Credenciales { get; set; }
     }
 }
