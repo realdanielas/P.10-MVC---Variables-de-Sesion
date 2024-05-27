@@ -18,7 +18,7 @@ namespace P._10_MVC___Variables_de_Sesion.Controllers
         {
             return View();
         }
-        public IActionResult ValidarUsuario(Login credenciales)
+        public IActionResult ValidarUsuario(Credenciales credenciales)
         {
             Users? usuario = (from user in _context.Users
                               where user.usuario == credenciales.usuario

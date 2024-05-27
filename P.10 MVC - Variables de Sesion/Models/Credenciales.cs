@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace P._10_MVC___Variables_de_Sesion.Models
 {
-    public class Login
+    public class Credenciales
     {
         [Key]
         public string? usuario { get; set; }
